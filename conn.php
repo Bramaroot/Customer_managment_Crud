@@ -1,14 +1,11 @@
 <?php
-// Accès à la base de données
 $nomServeur = "localhost";
 $nomUtilisateur = "root";
 $motDePasse = "";
 $database = "products";
 
-// Création de la connexion
 $connexion = new mysqli($nomServeur, $nomUtilisateur, $motDePasse, $database);
 
-// Verification de la connexion
 if ($connexion->connect_error) {
     die("La connexion a echoue : " . $connexion->connect_error);
 }
@@ -18,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nomUtilisateur = $_POST["username"];
     $motDePasse = $_POST["userMdp"];
 
-    // Requête preparee
     $requete = "SELECT id, username, userMdp FROM permit_users WHERE username = ?";
     $statement = $connexion->prepare($requete);
    // $statement->bind_param("s", $username);
